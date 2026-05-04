@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Saeem Portfolio</title>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<style>
+:root {
+  --navy: #0d1b2a;
+  --navy-mid: #1b2e45;
+  --navy-light: #243b55;
+  --gold: #c9a84c;
+  --gold-light: #e2c47e;
+  --gold-pale: #f5e9cc;
+  --ivory: #faf7f2;
+  --ivory-dark: #f0ebe0;
+  --text-dark: #1a1a2e;
+  --text-mid: #4a4a6a;
+}
+
+body {
+  font-family: 'Segoe UI', Georgia, sans-serif;
+  background: var(--ivory);
+  color: var(--text-dark);
+}
+html { scroll-behavior: smooth; }
+
+.navbar {
+  background: var(--navy) !important;
+  box-shadow: 0 2px 20px rgba(0,0,0,0.35);
+  border-bottom: 1px solid var(--gold);
+}
+.navbar-brand {
+  color: var(--gold) !important;
+  font-size: 1.4rem;
+  letter-spacing: 2px;
+  font-variant: small-caps;
+}
+.nav-link {
+  color: #c8d4e0 !important;
+  letter-spacing: 0.5px;
+  transition: color 0.2s;
+}
+.nav-link:hover { color: var(--gold) !important; }
+
+.hero {
+  background: linear-gradient(160deg, var(--navy) 0%, var(--navy-mid) 50%, var(--navy-light) 100%);
+  color: white;
+  padding: 80px 20px 70px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: repeating-linear-gradient(
+    45deg,
+    transparent,
+    transparent 60px,
+    rgba(201,168,76,0.04) 60px,
+    rgba(201,168,76,0.04) 61px
+  );
+}
+.hero h1 {
+  font-size: 2.6rem;
+  letter-spacing: 3px;
+  font-variant: small-caps;
+  color: var(--gold-light);
+}
+.hero p {
+  color: #b8c8d8;
+  font-size: 1.05rem;
+  letter-spacing: 1px;
+}
+.profile-img {
+  border-radius: 50%;
+  border: 4px solid var(--gold);
+  box-shadow: 0 0 0 6px rgba(201,168,76,0.2), 0 10px 30px rgba(0,0,0,0.5);
+}
+
+section { padding: 60px 0; }
+
+.section-title {
+  font-size: 1.7rem;
+  font-variant: small-caps;
+  letter-spacing: 2px;
+  color: var(--navy);
+  position: relative;
+  display: inline-block;
+  margin-bottom: 2rem;
+}
+.section-title::after {
+  content: '';
+  display: block;
+  width: 50%;
+  height: 2px;
+  background: var(--gold);
+  margin: 6px auto 0;
+}
+
+.card {
+  border: none;
+  border-radius: 12px;
+  overflow: hidden;
+  transition: 0.3s ease;
+  background: white;
+  box-shadow: 0 2px 12px rgba(13,27,42,0.08);
+  border: 1px solid rgba(201,168,76,0.15);
+}
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 16px 40px rgba(13,27,42,0.18);
+  border-color: rgba(201,168,76,0.4);
+}
+.card img { height: 200px; object-fit: cover; }
+.card-body { background: white; }
+
+.table {
+  background: white;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 2px 12px rgba(13,27,42,0.08);
+}
+.table thead tr {
+  background: var(--navy) !important;
+  color: var(--gold-light) !important;
+}
+.table thead th {
+  background: var(--navy) !important;
+  color: var(--gold-light) !important;
+  font-variant: small-caps;
+  letter-spacing: 1px;
+  border: none;
+  font-weight: 500;
+}
+.table tbody tr:nth-child(even) { background: var(--ivory-dark); }
+.table tbody tr { border-color: rgba(201,168,76,0.12); }
+.table-bordered td { border-color: rgba(201,168,76,0.15) !important; }
+
+.btn-gold {
+  background: var(--gold);
+  color: var(--navy);
+  border: none;
+  border-radius: 25px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  padding: 6px 20px;
+  transition: 0.2s;
+}
+.btn-gold:hover {
+  background: var(--gold-light);
+  color: var(--navy);
+  transform: translateY(-1px);
+}
+
+.btn-success,
+a.btn-success {
+  background: var(--gold) !important;
+  border-color: var(--gold) !important;
+  color: var(--navy) !important;
+  border-radius: 25px;
+  font-weight: 600;
+}
+.btn-success:hover {
+  background: var(--gold-light) !important;
+  border-color: var(--gold-light) !important;
+}
+
+.contact-box {
+  max-width: 600px;
+  margin: auto;
+  background: white !important;
+  border: 1px solid rgba(201,168,76,0.25) !important;
+  border-radius: 16px !important;
+}
+.form-control {
+  border: 1px solid rgba(201,168,76,0.3);
+  border-radius: 8px !important;
+}
+.form-control:focus {
+  border-color: var(--gold);
+  box-shadow: 0 0 0 3px rgba(201,168,76,0.15);
+}
+
+footer {
+  background: var(--navy);
+  color: #8899aa;
+  border-top: 1px solid var(--gold);
+  padding: 18px;
+  text-align: center;
+  letter-spacing: 1px;
+  font-size: 0.85rem;
+}
+
+.arrow img {
+  width: 45px;
+  position: fixed;
+  right: 20px;
+  bottom: 30px;
+  filter: drop-shadow(0 2px 6px rgba(0,0,0,0.3));
+}
+
+.bg-section-alt { background: var(--ivory-dark); }
+
+.skill-badge {
+  display: inline-block;
+  background: var(--navy);
+  color: var(--gold-light);
+  padding: 3px 14px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  letter-spacing: 0.5px;
+}
+</style>
+</head>
+
+<body>
+
+<nav class="navbar navbar-expand-lg sticky-top">
+  <div class="container">
+    <a class="navbar-brand fw-bold" href="#">Saeem</a>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav"
+      style="border-color: var(--gold);">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="nav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link" href="#top">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+        <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
+        <li class="nav-item"><a class="nav-link" href="#certificates">Certificates</a></li>
+        <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+        <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<section class="hero" id="top">
+    <img src="saeem..jpeg" width="150" height="150" class="profile-img" alt="Saeem">
+    <h1 class="mt-3">Hi, I'm Saeem</h1>
+    <p>B.Tech Student &nbsp;·&nbsp; Web Developer &nbsp;·&nbsp; Future AI Engineer</p>
+</section>
+
+<section id="about" class="container text-center">
+    <h2 class="section-title">About Me</h2>
+    <p class="lead" style="color: var(--text-mid); max-width: 600px; margin: auto;">
+        I am a B.Tech student in AI & Data Science. I enjoy building websites and learning new technologies.
+    </p>
+</section>
+
+<section id="skills" class="bg-section-alt">
+  <div class="container">
+    <h2 class="section-title text-center d-block">My Skills</h2>
+    <table class="table table-bordered text-center">
+        <thead>
+          <tr>
+            <th>Skill</th>
+            <th>Level</th>
+            <th>Experience</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>HTML</td><td><span class="skill-badge">Intermediate</span></td><td>4 Months</td></tr>
+          <tr><td>CSS</td><td><span class="skill-badge">Basic</span></td><td>2 Months</td></tr>
+          <tr><td>JavaScript</td><td><span class="skill-badge">Basic</span></td><td>1 Month</td></tr>
+          <tr><td>Python</td><td><span class="skill-badge">Intermediate</span></td><td>10 Months</td></tr>
+        </tbody>
+    </table>
+  </div>
+</section>
+
+<section id="certificates" class="container">
+    <h2 class="section-title text-center d-block">My Certificates</h2>
+
+    <div class="row g-4">
+        <div class="col-md-4">
+            <div class="card shadow-sm">
+                <img src="9.jpg.jpeg">
+                <div class="card-body text-center">
+                    <h6 style="color: var(--navy); font-variant: small-caps; letter-spacing: 1px;">Game Development</h6>
+                    <button class="btn btn-gold btn-sm" data-bs-toggle="modal" data-bs-target="#cert1">View</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card shadow-sm">
+                <img src="Screenshot 2026-04-29 151824.png">
+                <div class="card-body text-center">
+                    <h6 style="color: var(--navy); font-variant: small-caps; letter-spacing: 1px;">App Development</h6>
+                    <button class="btn btn-gold btn-sm" data-bs-toggle="modal" data-bs-target="#cert2">View</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card shadow-sm">
+                <img src="ieee.certi.png">
+                <div class="card-body text-center">
+                    <h6 style="color: var(--navy); font-variant: small-caps; letter-spacing: 1px;">IEEE Certificate</h6>
+                    <button class="btn btn-gold btn-sm" data-bs-toggle="modal" data-bs-target="#cert3">View</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="modal fade" id="cert1">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content" style="border: 1px solid var(--gold);">
+      <div class="modal-body text-center" style="background: var(--navy);">
+        <img src="9.jpg.jpeg" class="img-fluid" style="border-radius: 8px;">
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="cert2">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content" style="border: 1px solid var(--gold);">
+      <div class="modal-body text-center" style="background: var(--navy);">
+        <img src="Screenshot 2026-04-29 151824.png" class="img-fluid" style="border-radius: 8px;">
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="cert3">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content" style="border: 1px solid var(--gold);">
+      <div class="modal-body text-center" style="background: var(--navy);">
+        <img src="ieee.certi.png" class="img-fluid" style="border-radius: 8px;">
+      </div>
+    </div>
+  </div>
+</div>
+
+<section id="projects" class="bg-section-alt">
+  <div class="container">
+    <h2 class="section-title text-center d-block">My Projects</h2>
+
+    <div class="row g-4">
+        <div class="col-md-4">
+            <div class="card">
+                <img src="https://cdn.marketing123.123formbuilder.com/wp-content/uploads/2024/01/sunday-school-registration-form.jpg">
+                <div class="card-body text-center">
+                    <h5 style="color: var(--navy); font-variant: small-caps; letter-spacing: 1px;">Student Registration</h5>
+                    <a href="ragistration.html" class="btn btn-gold">View</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ5U0i9WCHfeODwNpMR4ipMPjr2dUEKnk6BPQ&s">
+                <div class="card-body text-center">
+                    <h5 style="color: var(--navy); font-variant: small-caps; letter-spacing: 1px;">Calculator</h5>
+                    <a href="D9task2.cal.html" class="btn btn-gold">View</a>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="container">
+    <h2 class="section-title text-center d-block">Contact Me</h2>
+
+    <div class="card p-4 contact-box">
+        <input class="form-control mb-3" type="text" placeholder="Your Name">
+        <input class="form-control mb-3" type="email" placeholder="Your Email">
+        <input class="form-control mb-3" type="tel" placeholder="Your Phone">
+        <textarea class="form-control mb-3" placeholder="Your Message" rows="4"></textarea>
+        <button class="btn btn-gold w-100" style="border-radius: 8px; padding: 10px; font-size: 1rem; letter-spacing: 1px;">
+          Send Message
+        </button>
+    </div>
+</section>
+
+<footer>
+   2026 &nbsp;·&nbsp; Saeem Portfolio
+</footer>
+
+<div class="arrow">
+    <a href="#top">
+        <img src="https://cdn-icons-png.flaticon.com/512/892/892692.png">
+    </a>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
